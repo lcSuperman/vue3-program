@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2997908 */
+  src: url('./iconfont.woff2?t=1639022082925') format('woff2'),
+       url('./iconfont.woff?t=1639022082925') format('woff'),
+       url('./iconfont.ttf?t=1639022082925') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-upload1:before {
+  content: "\e6df";
+}
+
+.icon-tubiao:before {
+  content: "\e60c";
+}
+
+.icon-workspace2:before {
+  content: "\e715";
+}
+
+.icon-table-fill:before {
+  content: "\e77b";
+}
+
+.icon-ic_menu_addfoder:before {
+  content: "\e632";
+}
+
+.icon-editor:before {
+  content: "\e601";
+}
+
+.icon-Directory:before {
+  content: "\e602";
+}
+
+.icon-table-line:before {
+  content: "\ea9e";
+}
+
+.icon-taskbar:before {
+  content: "\e608";
+}
+

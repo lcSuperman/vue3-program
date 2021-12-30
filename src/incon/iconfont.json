@@ -1,0 +1,72 @@
+{
+  "id": "2997908",
+  "name": "DaaS",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8474394",
+      "name": "upload",
+      "font_class": "upload1",
+      "unicode": "e6df",
+      "unicode_decimal": 59103
+    },
+    {
+      "icon_id": "582661",
+      "name": "ioc_table",
+      "font_class": "tubiao",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "2657282",
+      "name": "workspace",
+      "font_class": "workspace2",
+      "unicode": "e715",
+      "unicode_decimal": 59157
+    },
+    {
+      "icon_id": "17510621",
+      "name": "table-fill",
+      "font_class": "table-fill",
+      "unicode": "e77b",
+      "unicode_decimal": 59259
+    },
+    {
+      "icon_id": "17863425",
+      "name": "ic_menu_addfoder",
+      "font_class": "ic_menu_addfoder",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "20387662",
+      "name": "editor",
+      "font_class": "editor",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "22518231",
+      "name": "Directory",
+      "font_class": "Directory",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "24697773",
+      "name": "table-line",
+      "font_class": "table-line",
+      "unicode": "ea9e",
+      "unicode_decimal": 60062
+    },
+    {
+      "icon_id": "25570006",
+      "name": "taskbar",
+      "font_class": "taskbar",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    }
+  ]
+}

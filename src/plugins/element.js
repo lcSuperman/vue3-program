@@ -1,3 +1,5 @@
+//element-plus按需引入
+
 import { 
   ElButton ,
   ElMessage,
@@ -7,7 +9,7 @@ import {
   ElContainer,
   ElAside,
   ElHeader,
-  ElMain
+  ElMain,
 } from 'element-plus'
 
 
@@ -20,5 +22,5 @@ export default [
   ElContainer,
   ElAside,
   ElHeader,
-  ElMain
+  ElMain,
 ]

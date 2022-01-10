@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "25225103",
+      "name": "展开",
+      "font_class": "Shankar",
+      "unicode": "e6a9",
+      "unicode_decimal": 59049
+    },
+    {
       "icon_id": "8474394",
       "name": "upload",
       "font_class": "upload1",
@@ -67,6 +74,13 @@
       "font_class": "taskbar",
       "unicode": "e608",
       "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "577359",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e74c",
+      "unicode_decimal": 59212
     }
   ]
 }

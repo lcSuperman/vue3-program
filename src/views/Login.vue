@@ -59,7 +59,7 @@ export default  {
           })
           setTimeout(() => {
             this.$router.push({ path: '/home'})
-          },1000)
+          },500)
         } else {
           ElMessage.error('登录失败')
           return false

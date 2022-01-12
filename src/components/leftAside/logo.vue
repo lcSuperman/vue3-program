@@ -21,7 +21,6 @@ import {getCurrentInstance} from 'vue'
     return{
       click
     }
-
    }
  }
 

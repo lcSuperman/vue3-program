@@ -73,9 +73,7 @@ export default defineComponent({
       handleSelect,
       getMenusData
     }
-
   }
-
 })
 </script>
 

@@ -13,36 +13,41 @@
 
 <script>
  import {ElMessage} from 'element-plus' 
+ import {useRoute} from 'vue-router'
  import common from '@/utils/common'
+ import {ref,getCurrentInstance} from 'vue'
 
   export default {
-    data(){
-        return{
-          isCollapse:common.ISCOLLAPSE,
-        }
-    },
-    components:{
-    
-    },
-    methods:{
-       handleLogout(){
+   setup(){
+
+     let isCollapse = ref(common.ISCOLLAPSE)
+
+     let router = useRoute()
+     let vueEvent = getCurrentInstance().appContext.config.globalProperties.vueEvent
+
+     function handleLogout(){
          ElMessage({
             message: '退出成功',
             type: 'success',
           })
           setTimeout(() => {
-            this.$router.push({ path: '/'})
+             router.push({ path: '/'})
              sessionStorage.setItem('activeMenu',null)
           },500)   
-       },
+     }
 
-       collapse(){
-          this.isCollapse = !this.isCollapse
-          this.$bus.emit('isCollapse',this.isCollapse)
-       }
+     function collapse(){
+         isCollapse.value = !isCollapse.value
+         vueEvent.emit('isCollapse',isCollapse.value)
+     }
 
-    }
-     
+     return{
+      isCollapse,
+      handleLogout,
+      collapse
+     }
+   }
+    
   }
 
 </script>

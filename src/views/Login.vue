@@ -6,26 +6,26 @@
           <img src="@/assets/logo.png" alt="logo">
         </div>
         <el-form
-          ref="ruleForm"
-          :model="ruleForm"
+          ref="loginForm"
+          :model="loginData.ruleForm"
           status-icon
-          :rules="rules"
+          :rules="loginData.rules"
           label-width="100px"
           class="demo-ruleForm"
         >
           <el-form-item  prop="userName">
-            <el-input v-model="ruleForm.userName" placeholder="账号"></el-input>
+            <el-input v-model="loginData.ruleForm.userName" placeholder="账号"></el-input>
           </el-form-item>
           <el-form-item  prop="pass">
             <el-input
-              v-model="ruleForm.pass"
+              v-model="loginData.ruleForm.pass"
               type="password"
               placeholder="密码"
               autocomplete="off"
             ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+            <el-button type="primary" @click="submitForm(loginForm)">登录</el-button>
           </el-form-item>
         </el-form>
      </div>
@@ -35,38 +35,48 @@
 <script >
 import {ElMessage} from 'element-plus'
 import {checkUserName,validatePass} from '@/utils/validator'
-export default  {
-  name: 'Login',
-  data() {
-    return {
-      ruleForm: {
+import {ref, reactive} from 'vue'
+import { useRouter } from 'vue-router'
+
+export default{
+  setup(){
+    let router = useRouter()
+    let loginForm = ref(null)
+    let loginData = reactive({
+      ruleForm:{
         pass: '',
-        userName:'',
+        userName:''
       },
-      rules: {
+      rules:{
         pass: [{ validator: validatePass, trigger: 'blur' }],
         userName: [{validator: checkUserName, trigger: 'blur' }],
-      },
-    }
-  },
-  methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+      }
+    })
+
+   function submitForm(formEl){
+     formEl.validate((valid) => {
         if (valid) {
           ElMessage({
             message: '欢迎进入忍者世界',
             type: 'success',
           })
           setTimeout(() => {
-            this.$router.push({ path: '/home'})
+            router.push({ path: '/home'})
           },500)
         } else {
           ElMessage.error('登录失败')
           return false
         }
       })
-    },
-  },
+    }
+
+    return{
+      loginForm,
+      loginData,
+      submitForm
+    }
+  }
+ 
 }
 </script>
 

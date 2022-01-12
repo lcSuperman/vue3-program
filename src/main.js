@@ -11,7 +11,7 @@ import '@/icons/iconfont.css'
 // import elementPlus from './plugins/element'
 const app = createApp(App)
 
-app.config.globalProperties.$bus = mitt()  //vue3创建bus事件总线
+app.config.globalProperties.vueEvent = mitt()  //vue3创建bus事件总线
 
 // 按需导入Element Plus组件和插件
 // elementPlus.forEach(component => {

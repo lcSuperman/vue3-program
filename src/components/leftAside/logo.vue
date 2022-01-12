@@ -5,14 +5,23 @@
 </template>
 
 <script>
-
+import {useRouter} from 'vue-router'
+import {getCurrentInstance} from 'vue'
  export default{
-   methods:{
-     click(){
-      this.$router.push({path:"/home"})
-      this.$bus.emit('activeMeus',null)
+   setup(){
+    let router = useRouter()
+    let vueEvent = getCurrentInstance().appContext.config.globalProperties.vueEvent
+    
+    function click(){
+      router.push({path:"/home"})
+      vueEvent.emit('activeMeus',null)
       sessionStorage.setItem('activeMenu',null)
-     }
+    }
+
+    return{
+      click
+    }
+
    }
  }
 

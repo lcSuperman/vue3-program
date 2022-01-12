@@ -3,17 +3,17 @@
   <el-menu
     class="el-menu-vertical-demo"
     router
-    :collapse="isCollapse"
+    :collapse="leftMenusDate.isCollapse"
     @select="handleSelect"
-    :default-active="defaultactive"
+    :default-active="leftMenusDate.defaultactive"
     text-color="#fff"
     active-text-color="#000"
   >
-    <div v-for="item in menusData" :key="item.id">  
+    <div v-for="item in leftMenusDate.menusData" :key="item.id">  
       <el-submenu v-if="item.children"  :index="item.router">
         <template #title>
            <i class="iconfont" :class="item.icon"></i>
-           <span v-show="!isCollapse">{{item.label}}</span>
+           <span v-show="!leftMenusDate.isCollapse">{{item.label}}</span>
         </template>
           <el-menu-item v-for="ite in item.children" :key="ite.id" :index="ite.router"> 
             <template #title>
@@ -30,49 +30,51 @@
 </template>
 
 <script >
-import { defineComponent } from 'vue'
 import { getMenus} from '@/api/api'
+import {defineComponent,reactive,getCurrentInstance,onMounted} from 'vue'
+
 import common from '@/utils/common'
 
+
 export default defineComponent({
-  data(){
-    return{
+  setup(){ 
+    let leftMenusDate = reactive({
       defaultactive:null,
       isCollapse:common.ISCOLLAPSE,
       menusData:[],
-    }
-  },
+    })
 
-  setup() { 
+    let vueEvent = getCurrentInstance().appContext.config.globalProperties.vueEvent
+    vueEvent.on('activeMeus',value => {
+      leftMenusDate.defaultactive = value
+    })
+    vueEvent.on('isCollapse',value => {
+      leftMenusDate.isCollapse = value
+    })
 
-  },
+    onMounted(() => {
+      getMenusData()
+      leftMenusDate.defaultactive =  sessionStorage.getItem('activeMenu')
+    })
 
-  created(){
-   this.$bus.on('activeMeus',value => {
-      this.defaultactive = value
-   })
-   this.$bus.on('isCollapse',value => {
-      this.isCollapse = value
-   })
-  },
-
-  mounted(){
-    this.getMenusData()
-    this.defaultactive =  sessionStorage.getItem('activeMenu')
-  },
-
-  methods:{
-    handleSelect(index){
-      this.defaultactive = index
+    function handleSelect(index){
+      leftMenusDate.defaultactive = index
       sessionStorage.setItem('activeMenu',index)
-    },
-    getMenusData(){
+    }
+    
+    function getMenusData(){
       getMenus().then( response => {
-         this.menusData = response.data
+         leftMenusDate.menusData = response.data
       })
     }
-  }
 
+    return{
+      leftMenusDate,
+      handleSelect,
+      getMenusData
+    }
+
+  }
 
 })
 </script>

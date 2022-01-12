@@ -24,32 +24,28 @@ import LeftMenusVue from '../components/leftAside/leftMenus.vue'
 import Logo from '../components/leftAside/logo.vue'
 import Header from '../components/header/header.vue'
 import common from '@/utils/common'
+import {ref,getCurrentInstance} from 'vue'
 
 export default {
-  data(){
-    return{
-     isCollapse:common.ISCOLLAPSE
-    }
-  },
   setup() {
+    let isCollapse = ref(common.ISCOLLAPSE)
+    let vueEvent = getCurrentInstance().appContext.config.globalProperties.vueEvent
+    
+    vueEvent.on('isCollapse',value => {
+      isCollapse.value = value
+   })
+  
+    return{
+      isCollapse
+    }
     
   },
   components:{
     LeftMenusVue,
     Logo,
     Header,
-  },
-  created(){
-   this.$bus.on('isCollapse',value => {
-      this.isCollapse = value
-   })
-  },
-  mounted(){
-    
-  },
-  methods:{
-   
   }
+ 
 }
 </script>
 

@@ -13,6 +13,7 @@
       <el-submenu v-if="item.children"  :index="item.router">
         <template #title>
            <i class="iconfont" :class="item.icon"></i>
+           <!-- 这里用v-show是解决收起时一级菜单文字不隐藏问题 -->
            <span v-show="!leftMenusDate.isCollapse">{{item.label}}</span>
         </template>
           <el-menu-item v-for="ite in item.children" :key="ite.id" :index="ite.router"> 
@@ -32,35 +33,40 @@
 <script >
 import { getMenus} from '@/api/api'
 import {defineComponent,reactive,getCurrentInstance,onMounted} from 'vue'
-
 import common from '@/utils/common'
-
 
 export default defineComponent({
   setup(){ 
+    //把数据变成响应式
     let leftMenusDate = reactive({
       defaultactive:null,
       isCollapse:common.ISCOLLAPSE,
       menusData:[],
     })
 
-    let vueEvent = getCurrentInstance().appContext.config.globalProperties.vueEvent
-    vueEvent.on('activeMeus',value => {
-      leftMenusDate.defaultactive = value
-    })
+    //点击菜单触发点击样式和回显样式逻辑
+        //利用事件中心机制触发activeMeus事件设置被点击的迷人菜单，回显点击样式
+      let vueEvent = getCurrentInstance().appContext.config.globalProperties.vueEvent
+      vueEvent.on('activeMeus',value => {
+        leftMenusDate.defaultactive = value
+      })
+      onMounted(() => {
+        getMenusData()
+        //浏览器刷新后，从sessionStorage中获取之前保存的菜单index
+        leftMenusDate.defaultactive =  sessionStorage.getItem('activeMenu')
+      })
+      function handleSelect(index){
+        leftMenusDate.defaultactive = index
+        //把目前点击的菜单index存到sessionStorage中，保证浏览器刷新时还是之前触发的菜单
+        sessionStorage.setItem('activeMenu',index)
+      }
+
+    //利用事件中心机制触发isCollapse事件，设置菜单是否展开
     vueEvent.on('isCollapse',value => {
       leftMenusDate.isCollapse = value
     })
 
-    onMounted(() => {
-      getMenusData()
-      leftMenusDate.defaultactive =  sessionStorage.getItem('activeMenu')
-    })
-    function handleSelect(index){
-      leftMenusDate.defaultactive = index
-      sessionStorage.setItem('activeMenu',index)
-    }
-    
+    //从接口获取菜单数据
     function getMenusData(){
       getMenus().then( response => {
          leftMenusDate.menusData = response.data

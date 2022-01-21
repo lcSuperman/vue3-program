@@ -33,9 +33,9 @@
 </template>
 
 <script >
-import {ElMessage} from 'element-plus'
-import {checkUserName,validatePass} from '@/utils/validator'
-import {ref, reactive} from 'vue'
+import { ElMessage } from 'element-plus'
+import { checkUserName,validatePass } from '@/utils/validator'
+import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default{

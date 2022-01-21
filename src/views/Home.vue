@@ -31,6 +31,7 @@ export default {
     let isCollapse = ref(common.ISCOLLAPSE)
     let vueEvent = getCurrentInstance().appContext.config.globalProperties.vueEvent
     
+    //利用事件中心机制触发isCollapse事件，判断菜单是否展开来设置左侧菜单的宽
     vueEvent.on('isCollapse',value => {
       isCollapse.value = value
    })

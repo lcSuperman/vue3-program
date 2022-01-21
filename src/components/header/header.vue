@@ -12,17 +12,15 @@
 </template>
 
 <script>
- import {ElMessage} from 'element-plus' 
- import {useRoute} from 'vue-router'
+ import { ElMessage } from 'element-plus' 
+ import { useRouter } from 'vue-router'
  import common from '@/utils/common'
- import {ref,getCurrentInstance} from 'vue'
+ import { ref,getCurrentInstance } from 'vue'
 
   export default {
    setup(){
-
+     let router = useRouter()
      let isCollapse = ref(common.ISCOLLAPSE)
-
-     let router = useRoute()
      let vueEvent = getCurrentInstance().appContext.config.globalProperties.vueEvent
 
      function handleLogout(){

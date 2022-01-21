@@ -56,7 +56,6 @@ export default defineComponent({
       getMenusData()
       leftMenusDate.defaultactive =  sessionStorage.getItem('activeMenu')
     })
-
     function handleSelect(index){
       leftMenusDate.defaultactive = index
       sessionStorage.setItem('activeMenu',index)
@@ -115,6 +114,9 @@ export default defineComponent({
   .el-menu-vertical-demo:not(.el-menu--collapse) {
    width: 200px;
    min-height: 400px;
+  }
+  .el-icon-arrow-right{
+    display: none;
   }
 
 }

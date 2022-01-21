@@ -37,6 +37,7 @@ import common from '@/utils/common'
 
 export default defineComponent({
   setup(){ 
+    
     //把数据变成响应式
     let leftMenusDate = reactive({
       defaultactive:null,

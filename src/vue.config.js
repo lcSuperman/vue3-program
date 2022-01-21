@@ -1,4 +1,2 @@
 
-module.exports = {
-    lintOnSave: false
-}  
+

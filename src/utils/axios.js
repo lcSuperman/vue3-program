@@ -12,7 +12,7 @@ const service = axios.create({
 
 // 2.请求拦截器
 service.interceptors.request.use(config => {
-   //注意使用token的时候需要引入cookie方法或者用本地sessionStorage等方法，推荐js-cookie
+   //注意使用token的时候需要引入cookie方法或者用本地sessionStorage等方法
    config.data = JSON.stringify(config.data);
    let token = sessionStorage.getItem('token');
    if(token){

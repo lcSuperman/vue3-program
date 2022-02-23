@@ -1,83 +1,41 @@
 <template>
-  <div class="home">
-     <el-container>
-      <el-aside :width="isCollapse ? '64px' : '165px'">
-        <Logo />
-        <LeftMenusVue />
-      </el-aside>
-      <el-container>
-        <el-header>
-          <Header/>
-        </el-header>
-        <el-main>
-          <div class="main">  
-            <router-view></router-view>
-          </div>
-        </el-main>
-      </el-container>
-    </el-container>
-  </div>  
+   <div class="home">
+       <h2>vuex共享状态管理测试</h2>
+      <div :style="{marginBottom:'10px'}">总数（不小于0）：{{num}}</div>
+      <button @click="clickIncrease">点击+2</button>   <button @click="clickDecrease">点击-1</button>
+   </div> 
 </template>
 
 <script>
-import LeftMenusVue from '../components/leftAside/leftMenus.vue'
-import Logo from '../components/leftAside/logo.vue'
-import Header from '../components/header/header.vue'
-import common from '@/utils/common'
-import {ref,getCurrentInstance} from 'vue'
+import {computed} from 'vue'
+import { useStore} from 'vuex'
+export default({
+    
+    setup() {
+        const store = useStore()
 
-export default {
-  setup() {
-    let isCollapse = ref(common.ISCOLLAPSE)
-    let vueEvent = getCurrentInstance().appContext.config.globalProperties.vueEvent
-    
-    //利用事件中心机制触发isCollapse事件，判断菜单是否展开来设置左侧菜单的宽
-    vueEvent.on('isCollapse',value => {
-      isCollapse.value = value
-   })
-  
-    return{
-      isCollapse
+        const num = computed(() => store.state.num)
+        function clickIncrease(){
+          var payload = {count:2}
+          store.commit('increase', payload)
+        }
+        function clickDecrease(){
+          var payload = {count:1}
+          store.commit('decrease', payload)
+        }
+
+        return{
+           clickIncrease,
+           clickDecrease,
+           num
+        }
+        
     }
-    
-  },
-  components:{
-    LeftMenusVue,
-    Logo,
-    Header,
-  }
-}
+})
 </script>
 
-
-
 <style lang="less" scoped>
- @import '~@/assets/less/styles.less';
 .home{
-  height: 100%;
-  .el-container {
-  height: 100%;
-  .el-aside {
-    background-color: @left-aside;
-    transition: width .5s;
-    overflow: hidden;
-  }
-  .el-header{
-     background-color:@header-color;
-  }
-  .el-main{
-    background-color: #fff;
-    .main{
-      width: 100%;
-      height:100%;
-      background-color: #f6f6f6;    
-    }
-  }
+    padding: 10px 10px;
 }
-
-}
-
-
- 
-
 </style>

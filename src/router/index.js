@@ -11,12 +11,12 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: () => import('../views/Home.vue'),
+    component: () => import('../views/index.vue'),
     children:[
       {
         path: '',
         name: '首页',
-        component: () => import('../views/index')
+        component: () => import('../views/home.vue')
       },
       {
         path: 'one',

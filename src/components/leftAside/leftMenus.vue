@@ -1,5 +1,4 @@
 <template>
-
   <el-menu
     class="el-menu-vertical-demo"
     router
@@ -46,7 +45,7 @@ export default defineComponent({
     })
 
     //点击菜单触发点击样式和回显样式逻辑
-        //利用事件中心机制触发activeMeus事件设置被点击的迷人菜单，回显点击样式
+        //利用事件中心机制触发activeMeus事件设置被点击的菜单，回显点击样式
       let vueEvent = getCurrentInstance().appContext.config.globalProperties.vueEvent
       vueEvent.on('activeMeus',value => {
         leftMenusDate.defaultactive = value

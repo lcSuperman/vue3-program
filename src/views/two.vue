@@ -29,7 +29,6 @@ export default({
            clickDecrease,
            num
         }
-        
     }
 })
 </script>

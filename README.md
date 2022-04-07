@@ -33,4 +33,4 @@ npm install
 ```
 npm run dev
 ```
-
+### 直接在浏览器打开 http://localhost:3000 如果有数据，服务就启动成功

@@ -21,11 +21,11 @@ npm run serve
 
 # 后端代码
 
-### 进去serve的目录下
+### 进入serve的目录下
 ```
 cd serve
 ```
-初始化包
+### 初始化包
 ```
 npm install
 ```

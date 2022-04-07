@@ -8,26 +8,29 @@
 ![微信截图_20220110181801](https://user-images.githubusercontent.com/46336691/148750157-61548382-23f1-4440-b330-e0304516e066.png)
 
 
-
-## Project setup
+# 前端代码
+### 把项目拉下来之后初始化包
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 然后输入下面命令启动前端项目
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+# 后端代码
+
+### 进去serve的目录下
 ```
-npm run build
+cd serve
+```
+初始化包
+```
+npm install
+```
+### 然后输入下面命令启动后端服务
+```
+npm run dev
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
